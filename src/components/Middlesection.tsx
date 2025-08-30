@@ -7,8 +7,26 @@ import {
   TrendingUp
 } from 'lucide-react';
 
+// Define interfaces for account data
+interface Account {
+  title: string;
+  risk: 'Low Risk' | 'Medium Risk' | 'High Risk' | string;
+  score: number;
+  manager: string;
+  location: string;
+  office: string;
+  category: string;
+  value: string;
+  growth: string;
+}
+
+interface AccountCardProps {
+  account: Account;
+  index: number;
+}
+
 // Account Card Component
-const AccountCard = ({ account, index }: { account: any, index: number }) => {
+const AccountCard = ({ account, index }: AccountCardProps) => {
   const getRiskColor = (risk: string) => {
     switch (risk.toLowerCase()) {
       case 'low risk':
@@ -118,11 +136,11 @@ const AccountCard = ({ account, index }: { account: any, index: number }) => {
 };
 
 const MiddleSection = () => {
-  const accounts = [
+  const accounts: Account[] = [
     {
       title: 'Los Angeles County Metropolitan Transportation Authority (Metro)',
       score: 92,
-      risk: 'Low risk',
+      risk: 'Low Risk',
       manager: 'Diana Rodriguez',
       location: 'Los Angeles, CA',
       office: 'West Coast Office',
@@ -133,7 +151,7 @@ const MiddleSection = () => {
     {
       title: 'Los Angeles County Metropolitan Transportation Authority (Metro)',
       score: 92,
-      risk: 'Medium risk',
+      risk: 'Medium Risk',
       manager: 'Diana Rodriguez',
       location: 'Los Angeles, CA',
       office: 'West Coast Office',
@@ -144,7 +162,7 @@ const MiddleSection = () => {
     {
       title: 'Los Angeles County Metropolitan Transportation Authority (Metro)',
       score: 92,
-      risk: 'High risk',
+      risk: 'High Risk',
       manager: 'David Rodriguez',
       location: 'Los Angeles, CA',
       office: 'West Coast Office',
